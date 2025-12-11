@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Renter Dashboard: {{ renter.first_name }} ({{ renter.email }})</h3>
+
+<h4>Profile</h4>
+<ul>
+    <li>Address: {{ renter.address }}</li>
+    <li>Move-in date: {{ renter.move_in_date }}</li>
+    <li>Preferred location: {{ renter.preferred_location }}</li>
+    <li>Budget: {{ renter.budget }}</li>
+</ul>
+
+<h4>Reward Points</h4>
+<p>Total points: <strong>{{ total_points }}</strong></p>
+
+<h4>Bookings</h4>
+<table>
+    <thead>
+    <tr>
+        <th>Booking ID</th>
+        <th>Date</th>
+        <th>Property ID</th>
+        <th>Location</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Price</th>
+        <th>Points Earned</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for b in bookings %}
+        <tr>
+            <td>{{ b.booking_id }}</td>
+            <td>{{ b.booking_date }}</td>
+            <td>{{ b.property_id }}</td>
+            <td>{{ b.location }}</td>
+            <td>{{ b.city }}</td>
+            <td>{{ b.state }}</td>
+            <td>{{ "%.2f"|format(b.price) }}</td>
+            <td>{{ b.points_balance }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

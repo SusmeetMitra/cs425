@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Welcome</h3>
+<p>
+    This web application demonstrates the relational schema and ER design
+    for a Real Estate Management system.
+</p>
+<ul>
+    <li><strong>Register renters</strong> (Users + Renter tables).</li>
+    <li><strong>Browse/search properties</strong> joined with Neighbourhood and property subtypes.</li>
+    <li><strong>Create bookings</strong> using credit cards, with automatic reward points.</li>
+    <li><strong>Renter dashboard</strong> showing bookings and total rewards.</li>
+</ul>
+
+<p>
+    For the demo, you can:
+</p>
+<ol>
+    <li>Register a new renter.</li>
+    <li>Browse properties and pick one.</li>
+    <li>Create a booking.</li>
+    <li>Open the dashboard at <code>/renters/&lt;renter_email&gt;</code>.</li>
+</ol>
+{% endblock %}

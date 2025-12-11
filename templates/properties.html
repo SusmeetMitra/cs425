@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Browse Properties</h3>
+
+<form method="get">
+    <div>
+        <label for="city">City contains:</label>
+        <input type="text" id="city" name="city" value="{{ city }}">
+    </div>
+    <div>
+        <label for="min_price">Min price:</label>
+        <input type="number" step="0.01" id="min_price" name="min_price" value="{{ min_price }}">
+    </div>
+    <div>
+        <label for="max_price">Max price:</label>
+        <input type="number" step="0.01" id="max_price" name="max_price" value="{{ max_price }}">
+    </div>
+    <div>
+        <label for="only_available">Only available:</label>
+        <input type="checkbox" id="only_available" name="only_available"
+               {% if only_available == "on" %}checked{% endif %}>
+    </div>
+    <input type="submit" value="Search">
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Agent</th>
+        <th>Zip</th>
+        <th>Crime Rate</th>
+        <th>Nearby Schools</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in properties %}
+        <tr>
+            <td>{{ p.property_id }}</td>
+            <td>{{ p.property_type }}</td>
+            <td>{{ p.location }}</td>
+            <td>{{ p.city }}</td>
+            <td>{{ p.state }}</td>
+            <td>{{ "%.2f"|format(p.price) }}</td>
+            <td>{{ "Yes" if p.availability else "No" }}</td>
+            <td>{{ p.agent_name or "N/A" }}</td>
+            <td>{{ p.zip_code }}</td>
+            <td>{{ p.crime_rate }}</td>
+            <td>{{ p.nearby_schools }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Create New Booking</h3>
+
+<form method="post">
+    <div>
+        <label for="renter_email">Renter Email:</label>
+        <input type="email" name="renter_email" id="renter_email" required>
+    </div>
+
+    <div>
+        <label for="property_id">Property:</label>
+        <select name="property_id" id="property_id" required>
+            <option value="">-- choose available property --</option>
+            {% for p in properties %}
+                <option value="{{ p.property_id }}">
+                    {{ p.property_id }} - {{ p.location }}, {{ p.city }} ({{ "%.2f"|format(p.price) }})
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <h4>Credit Card Details</h4>
+    <div>
+        <label for="card_number">Card Number:</label>
+        <input type="text" name="card_number" id="card_number" required>
+    </div>
+    <div>
+        <label for="card_holder">Card Holder Name:</label>
+        <input type="text" name="card_holder" id="card_holder" required>
+    </div>
+    <div>
+        <label for="cvv">CVV:</label>
+        <input type="text" name="cvv" id="cvv" required>
+    </div>
+    <div>
+        <label for="exp_date">Expiry Date:</label>
+        <input type="date" name="exp_date" id="exp_date" required>
+    </div>
+
+    <input type="submit" value="Create Booking">
+</form>
+
+<p>
+    After creating a booking, open the dashboard at:<br>
+    <code>/renters/&lt;renter_email&gt;</code>
+</p>
+{% endblock %}

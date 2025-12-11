@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Real Estate Management App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+        header { background: #003366; color: white; padding: 10px 20px; }
+        header h2 { margin: 0; }
+        nav a { color: white; margin-right: 15px; text-decoration: none; font-weight: bold; }
+        .container { padding: 20px; max-width: 1000px; margin: 0 auto; background: white; min-height: 80vh; }
+        table { border-collapse: collapse; width: 100%; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; font-size: 14px; }
+        th { background: #f0f0f0; }
+        .flash { background: #ffe0e0; margin-bottom: 10px; padding: 8px; border: 1px solid #ffb0b0;}
+        form div { margin-bottom: 8px; }
+        label { display: inline-block; width: 180px; }
+        input[type="text"], input[type="number"], input[type="date"],
+        input[type="email"], select { width: 260px; padding: 4px; }
+        input[type="submit"], button { padding: 6px 12px; margin-top: 8px; cursor: pointer; }
+        footer { text-align: center; font-size: 12px; padding: 10px; color: #555; }
+    </style>
+</head>
+<body>
+<header>
+    <h2>CS 425 Real Estate Management</h2>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('new_renter') }}">Register Renter</a>
+        <a href="{{ url_for('list_properties') }}">Browse Properties</a>
+        <a href="{{ url_for('new_booking') }}">New Booking</a>
+    </nav>
+</header>
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="flash">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+
+<footer>
+    Final Project – Real Estate Database Application
+</footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Python cruft
+__pycache__/
+*.pyc
+
+# Virtual envs
+venv/
+.env/
+.venv/
+
+# IDE stuff
+.vscode/
+.idea/
+
+# Local config with passwords
+config.py
