@@ -13,3 +13,7 @@ venv/
 
 # Local config with passwords
 config.py
+
+# zip files
+*.zip
+*.tar.gz
